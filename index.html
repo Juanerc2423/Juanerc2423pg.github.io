@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Mental - Método Científico</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    flex-direction:column;
+    background:#f4f1ea;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:auto;
+    padding:40px;
+}
+
+.container{
+    width:1400px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    position:relative;
+}
+
+.step{
+    position:relative;
+    width:220px;
+    height:320px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+}
+
+.number{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#222;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+
+    animation:float 2.5s ease-in-out infinite;
+}
+
+.card{
+    width:100%;
+    height:260px;
+    position:relative;
+    cursor:pointer;
+    perspective:1000px;
+}
+
+.card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform 0.8s;
+    transform-style:preserve-3d;
+}
+
+.card:hover .card-inner{
+    transform:rotateY(180deg) scale(1.03);
+}
+
+.front,
+.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    padding:20px;
+}
+
+.front{
+    background:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+}
+
+.back{
+    background:#222;
+    color:white;
+    transform:rotateY(180deg);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.title{
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.icon{
+    width:90px;
+    height:90px;
+    position:relative;
+}
+
+/* OBSERVACIÓN */
+.eye{
+    width:90px;
+    height:55px;
+    border:4px solid #222;
+    border-radius:50%;
+    position:relative;
+}
+
+.eye::before{
+    content:"";
+    width:25px;
+    height:25px;
+    background:#222;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+
+/* HIPÓTESIS */
+.question{
+    font-size:90px;
+    font-weight:bold;
+    color:#222;
+}
+
+/* EXPERIMENTACIÓN */
+.flasks{
+    display:flex;
+    gap:15px;
+    align-items:flex-end;
+}
+
+.flask{
+    width:35px;
+    height:70px;
+    border:4px solid #222;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius:15px;
+    position:relative;
+}
+
+.flask::before{
+    content:"";
+    width:12px;
+    height:20px;
+    border:4px solid #222;
+    border-bottom:none;
+    position:absolute;
+    top:-22px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* RESULTADOS */
+.chart{
+    width:100px;
+    height:80px;
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+}
+
+.bar{
+    width:20px;
+    background:#222;
+    border-radius:5px 5px 0 0;
+    animation:grow 2s infinite alternate;
+}
+
+.bar:nth-child(1){height:35px;}
+.bar:nth-child(2){height:55px;}
+.bar:nth-child(3){height:75px;}
+
+@keyframes grow{
+    from{
+        transform:scaleY(0.7);
+    }
+    to{
+        transform:scaleY(1);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@media(max-width:1200px){
+    .container{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<h1 class="titulo-principal">El Método Científico</h1>
+
+<div class="container">
+
+    <div class="step">
+        <div class="number">1</div>
+
+        <div class="card">
+            <div class="card-inner">
+
+                <div class="front">
+                    <div class="icon">
+                        <div class="eye"></div>
+                    </div>
+                    <div class="title">Observación</div>
+                </div>
+
+                <div class="back">
+                    Consiste en identificar un fenómeno o situación que llama la atención y necesita ser estudiada.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">2</div>
+
+        <div class="card">
+            <div class="card-inner">
+
+                <div class="front">
+                    <div class="icon">
+                        <div class="question">?</div>
+                    </div>
+                    <div class="title">Hipótesis</div>
+                </div>
+
+                <div class="back">
+                    Se plantea una posible explicación o solución basada en preguntas sobre el problema observado.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">3</div>
+
+        <div class="card">
+            <div class="card-inner">
+
+                <div class="front">
+                    <div class="icon flasks">
+                        <div class="flask"></div>
+                        <div class="flask"></div>
+                    </div>
+                    <div class="title">Experimentación</div>
+                </div>
+
+                <div class="back">
+                    Se realizan pruebas y experimentos para comprobar si la hipótesis es correcta o no.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">4</div>
+
+        <div class="card">
+            <div class="card-inner">
+
+                <div class="front">
+                    <div class="icon chart">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="title">Resultados</div>
+                </div>
+
+                <div class="back">
+                    Se analizan los datos obtenidos y se concluye si la hipótesis fue válida.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
